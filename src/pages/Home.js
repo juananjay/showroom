@@ -8,12 +8,11 @@ import ServerErrorModal from "components/ServerErrorModal";
 import IDNLiveList from "pages/idn/IDNLiveList";
 import MainLayout from "pages/layout/MainLayout";
 import {
-  PremiumLive,
   RoomAcademy,
   RoomList,
   RoomLive,
-  RoomUpcoming,
   SearchAndFilter,
+  TopCompetition,
 } from "parts";
 import RecentLive from "parts/RecentLive";
 import { useDispatch, useSelector } from "react-redux";
@@ -93,9 +92,8 @@ function Home(props) {
           {allMember ? (
             <>
               <RoomLive isOnLive={isLive} search={search} theme={props.theme} />
-              <RoomUpcoming search={search} room={memberRegular} />
-              <PremiumLive theme={props.theme} />
               <IDNLiveList />
+              <TopCompetition />
               <RecentLive isSearch={search} />
               <Schedule isShowing={true} isSearch={search} isHome />
               {filtered.length > 0 && (

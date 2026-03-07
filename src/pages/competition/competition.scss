@@ -61,6 +61,7 @@
     gap: 0.75rem;
   }
 
+
   // Podium section for top 3
   .podium-section {
     display: flex;
@@ -69,6 +70,14 @@
     gap: 1rem;
     margin-bottom: 2rem;
     padding: 2rem 0 1rem;
+
+    &.home {
+      padding: 0px;
+      margin: 0px;
+      justify-content: flex-start;
+      align-items: stretch;
+      overflow-x: auto;
+    }
 
     .podium-card {
       display: flex;

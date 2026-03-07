@@ -5,6 +5,7 @@ import RoomFollow from "./RoomFollow"
 import RoomUpcoming from "./RoomUpcoming"
 import SearchAndFilter from "./SearchAndFilter"
 import PremiumLive from "./PremiumLive"
+import TopCompetition from "./TopCompetition"
 
 export {
   RoomList,
@@ -13,5 +14,6 @@ export {
   RoomFollow,
   RoomUpcoming,
   PremiumLive,
-  SearchAndFilter
+  SearchAndFilter,
+  TopCompetition
 }
