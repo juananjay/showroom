@@ -168,6 +168,8 @@ const CHAT_ID = (username, slug) => {
   return `${SHOWROOM_API}/scrapper/channel-id?username=${username}&slug=${slug}`;
 };
 
+const SHOWROOM_COMPETITION = `${SHOWROOM_LOG_API}/showroom_competition_detail`;
+
 export {
   API,
   ROOM_LIST_API,
@@ -231,5 +233,6 @@ export {
   LEADERBOARD_SHOWROOM,
   LEADERBOARD_IDN,
   MOST_WATCH_IDN,
-  CHAT_ID
+  CHAT_ID,
+  SHOWROOM_COMPETITION
 };
