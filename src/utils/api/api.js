@@ -50,7 +50,7 @@ const LIST_USERS = (page, search) => {
 const CREATE_USER = `${ADMIN_API}/users`;
 
 const DETAIL_USER = (userId) => {
-  return `${ADMIN_API}/users/${userId}`;
+  return `${ADMIN_API}/api/users/${userId}`;
 };
 
 const DELETE_USER = (userId) => {
@@ -168,7 +168,7 @@ const CHAT_ID = (username, slug) => {
   return `${SHOWROOM_API}/scrapper/channel-id?username=${username}&slug=${slug}`;
 };
 
-const SHOWROOM_COMPETITION = `${SHOWROOM_LOG_API}/showroom_competition_detail`;
+const SHOWROOM_COMPETITION = `${API}/rooms/competition`;
 
 export {
   API,
