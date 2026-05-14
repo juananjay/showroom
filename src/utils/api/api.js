@@ -148,9 +148,9 @@ const PREMIUM_LIVES = `${SHOWROOM_API}/premium-lives`;
 const LIST_DONATOR = `${ADMIN_API}/discord/role?type=donator`;
 
 //IDN LIVES
-const ROOM_LIVES_IDN = `${SHOWROOM_LOG_API}/idn_lives`;
+const ROOM_LIVES_IDN = `${API}/idn_lives`;
 const ROOM_LIVE_IDN_DETAIL = (slug) => {
-  return `${SHOWROOM_LOG_API}/watch/${slug}/idn`;
+  return `${API}/watch/${slug}/idn`;
 };
 
 const PODIUM_STAGE = (liveId) => {
