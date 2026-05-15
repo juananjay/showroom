@@ -7,16 +7,6 @@ export default function PlayerMulti({ url, number, idnUrl, refreshKey }) {
 
   return (
     <div className="idn-live player-wrapper mb-3">
-      <div className="logo-multi shadow-lg">
-        <a href={idnUrl} target="_blank" rel="noreferrer">
-          <img
-            className="multi mt-1"
-            width={60}
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/IDN_Live.svg/1024px-IDN_Live.svg.png"
-            alt="idn live"
-          />
-        </a>
-      </div>
       <ReactPlayer
         key={refreshKey}
         className="react-player"
