@@ -1,0 +1,262 @@
+/* ==============================
+   Replay Chat Styles
+   ============================== */
+
+.replay-chat-card {
+  background-color: #1a1e25 !important;
+  border: 1px solid #2a2f38 !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.replay-chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #2a2f38;
+}
+
+.replay-chat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.replay-chat-live-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #24a2b7;
+  border-radius: 50%;
+  animation: chatDotPulse 2s infinite;
+}
+
+@keyframes chatDotPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.replay-chat-title {
+  color: #e8ecf1;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.replay-chat-count {
+  color: #5a5f68;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Search */
+.replay-chat-search-wrapper {
+  padding: 10px 12px;
+  border-bottom: 1px solid #2a2f38;
+}
+
+.replay-chat-search {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #21252b;
+  border: 1px solid #2a2f38;
+  border-radius: 6px;
+  color: #e8ecf1;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.replay-chat-search:focus {
+  border-color: #24a2b7;
+}
+
+.replay-chat-search::placeholder {
+  color: #5a5f68;
+}
+
+/* Messages container */
+.replay-chat-messages {
+  overflow-y: auto;
+  padding: 8px 0;
+  scroll-behavior: smooth;
+}
+
+.replay-chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.replay-chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.replay-chat-messages::-webkit-scrollbar-thumb {
+  background-color: #3a3f48;
+  border-radius: 4px;
+}
+
+.replay-chat-messages::-webkit-scrollbar-thumb:hover {
+  background-color: #4a4f58;
+}
+
+/* Individual message */
+.replay-chat-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6px 16px;
+  transition: background-color 0.15s ease;
+  gap: 8px;
+}
+
+.replay-chat-message:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.replay-chat-message.gift {
+  background-color: rgba(255, 193, 7, 0.06);
+  border-left: 2px solid #ffc107;
+}
+
+.replay-chat-message.gift:hover {
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.replay-chat-message-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.replay-chat-username {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.replay-chat-gift-icon {
+  color: #ffc107;
+  font-size: 12px;
+}
+
+.replay-chat-text {
+  color: #c0c5ce;
+  font-size: 13px;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.replay-chat-timestamp {
+  color: #5a5f68;
+  font-size: 11px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Loading state */
+.replay-chat-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #5a5f68;
+}
+
+.replay-chat-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #2a2f38;
+  border-top-color: #24a2b7;
+  border-radius: 50%;
+  animation: chatSpin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes chatSpin {
+  to { transform: rotate(360deg); }
+}
+
+.replay-chat-loading p,
+.replay-chat-error p {
+  font-size: 13px;
+  color: #5a5f68 !important;
+}
+
+/* Error state */
+.replay-chat-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #3a3f48;
+  gap: 12px;
+}
+
+/* Empty state */
+.replay-chat-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.replay-chat-empty p {
+  color: white !important;
+  font-size: 13px;
+}
+
+/* Scroll to bottom button */
+.replay-chat-scroll-btn {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  background-color: #24a2b7;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(36, 162, 183, 0.3);
+  transition: all 0.2s ease;
+}
+
+.replay-chat-scroll-btn:hover {
+  background-color: #1b8a9d;
+  box-shadow: 0 4px 12px rgba(36, 162, 183, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .replay-chat-messages {
+    height: 350px !important;
+  }
+
+  .replay-chat-message {
+    padding: 5px 12px;
+  }
+
+  .replay-chat-username {
+    font-size: 12px;
+  }
+
+  .replay-chat-text {
+    font-size: 12px;
+  }
+}

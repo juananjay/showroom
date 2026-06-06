@@ -28,6 +28,8 @@ import LeaderboardMember from "pages/leaderboard/LeaderboardMember";
 import MultiRoomIDNMobile from "pages/idn/mobile/MultiRoomIDNMobile";
 import MultiRoomShowroomMobile from "pages/multi-sr-android";
 import Competition from "pages/competition";
+import ReplayList from "pages/replay/ReplayList";
+import ReplayDetail from "pages/replay/ReplayDetail";
 
 const routes = [
   { path: "/", component: Home, exact: true },
@@ -61,6 +63,8 @@ const routes = [
   { path: "/multi-room-idn-mobile", component: MultiRoomIDNMobile },
   { path: "/multi-room-sr-mobile", component: MultiRoomShowroomMobile },
   { path: "/competition", component: Competition },
+  { path: "/replay", component: ReplayList, exact: true },
+  { path: "/replay/:member/:id", component: ReplayDetail },
 ];
 
 export default routes;

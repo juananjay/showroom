@@ -1,0 +1,326 @@
+/* ==============================
+   Replay List Page Styles
+   ============================== */
+
+/* Header */
+.replay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.replay-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.replay-title-icon {
+  font-size: 28px;
+  color: #24a2b7;
+}
+
+/* Search input */
+.replay-search-input {
+  background-color: #2a2f38 !important;
+  border: 1px solid #3a3f48 !important;
+  color: #fff !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.replay-search-input:focus {
+  border-color: #24a2b7 !important;
+  box-shadow: 0 0 0 3px rgba(36, 162, 183, 0.15) !important;
+}
+
+.replay-search-input::placeholder {
+  color: #8a8f98 !important;
+}
+
+/* Filter buttons */
+.replay-filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.replay-filter-btn {
+  padding: 6px 18px;
+  border-radius: 6px;
+  border: 1px solid #3a3f48;
+  background-color: #2a2f38;
+  color: #c0c5ce;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.replay-filter-btn:hover {
+  background-color: #353a45;
+  border-color: #24a2b7;
+  color: #fff;
+}
+
+.replay-filter-btn.active {
+  background-color: #24a2b7;
+  border-color: #24a2b7;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Showing text */
+.replay-showing-text {
+  text-align: end;
+  color: #24a2b7;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Card */
+.replay-card {
+  background-color: #1a1e25;
+  border: 1px solid #2a2f38;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.replay-card:hover {
+  transform: translateY(-4px);
+  border-color: #24a2b7;
+  box-shadow: 0 8px 25px rgba(36, 162, 183, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Thumbnail */
+.replay-card-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.replay-card-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.replay-card:hover .replay-card-thumbnail {
+  transform: scale(1.05);
+}
+
+/* Play overlay */
+.replay-card-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.replay-card:hover .replay-card-play-overlay {
+  opacity: 1;
+}
+
+.replay-play-icon {
+  font-size: 56px;
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.replay-card:hover .replay-play-icon {
+  transform: scale(1.1);
+}
+
+/* Platform badge */
+.replay-card-platform-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ECFAFC;
+  backdrop-filter: blur(4px);
+  border: 1px solid #24A2B7;
+  color: #24A2B7;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+/* Card body */
+.replay-card-body {
+  padding: 14px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.replay-card-title {
+  color: #e8ecf1;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+/* Meta info */
+.replay-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.replay-card-member,
+.replay-card-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #8a8f98;
+  font-size: 13px;
+}
+
+.replay-meta-icon {
+  font-size: 14px;
+  color: #24a2b7;
+  flex-shrink: 0;
+}
+
+/* Chat replay badge */
+.replay-card-chat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #5ec792;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+/* Empty state */
+.replay-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  color: white;
+}
+
+.replay-empty-icon {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.replay-empty p {
+  font-size: 16px;
+  color: white !important;
+}
+
+/* Bottom pagination */
+.replay-bottom-pagination {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+/* Skeleton loading */
+.replay-card-skeleton {
+  background-color: #1a1e25;
+  border: 1px solid #2a2f38;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.skeleton-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(
+    110deg,
+    #2a2f38 8%,
+    #353a45 18%,
+    #2a2f38 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+.skeleton-content {
+  padding: 14px 16px;
+}
+
+.skeleton-title {
+  height: 16px;
+  width: 80%;
+  background: linear-gradient(
+    110deg,
+    #2a2f38 8%,
+    #353a45 18%,
+    #2a2f38 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.skeleton-meta {
+  height: 12px;
+  width: 50%;
+  background: linear-gradient(
+    110deg,
+    #2a2f38 8%,
+    #353a45 18%,
+    #2a2f38 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .replay-filter-buttons {
+    flex-wrap: wrap;
+  }
+
+  .replay-card-title {
+    font-size: 13px;
+  }
+}
