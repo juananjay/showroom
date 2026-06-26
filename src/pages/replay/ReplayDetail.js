@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useParams, useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect, useRef, useState } from "react";
+import { isDesktop } from "react-device-detect";
+import { useLocation, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Col, Row } from "reactstrap";
 import MainLayout from "../layout/MainLayout";
 import ReplayChat from "./ReplayChat";
@@ -91,28 +92,35 @@ const ReplayDetail = (props) => {
     >
       <div className="layout">
         <Row>
-          <Col md={"8"}>
+          <Col md="7">
             <div className="replay-player-wrapper">
-              <div className="replay-player-container">
-                <div ref={playerRef} id="replay-yt-player" />
-              </div>
+              {platform === "SHOWROOM" ? (
+                <div className="replay-player-container-showroom">
+                  <div ref={playerRef} id="replay-yt-player-showroom" />
+                </div>
+              ) : (
+                <div className="replay-player-container">
+                  <div ref={playerRef} id="replay-yt-player" />
+                </div>
+              )}
             </div>
-
-            <div className="replay-video-info">
-              <h4 className="replay-video-title">{title}</h4>
-              <div className="replay-video-meta-row">
-                <div className="replay-video-meta-left">
-                  <span className="replay-video-member">{member}</span>
-                  <span className="replay-video-separator">•</span>
-                  <span className="replay-video-date">{date}</span>
-                  <span className="replay-video-separator">•</span>
-                  <span className="replay-video-platform-badge">{platform}</span>
+            {isDesktop && (
+              <div className="replay-video-info">
+                <h4 className="replay-video-title">{title}</h4>
+                <div className="replay-video-meta-row">
+                  <div className="replay-video-meta-left">
+                    <span className="replay-video-member">{member}</span>
+                    <span className="replay-video-separator">•</span>
+                    <span className="replay-video-date">{date}</span>
+                    <span className="replay-video-separator">•</span>
+                    <span className="replay-video-platform-badge">{platform}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </Col>
 
-          <Col md={"4"}>
+          <Col md="5" className="mb-4">
             <ReplayChat
               srtFile={srtFile}
               currentTime={currentTime}

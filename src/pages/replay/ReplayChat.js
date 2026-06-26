@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import { Card } from "reactstrap";
-import { FaArrowAltCircleUp, FaArrowUp, FaChevronUp, FaCommentDots, FaGift } from "react-icons/fa";
-import { FcSearch } from "react-icons/fc";
 import axios from "axios";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { FaArrowUp, FaCommentDots, FaGift } from "react-icons/fa";
+import { IoChatbubbleEllipses } from "react-icons/io5";
+import { Card } from "reactstrap";
 import "./ReplayChat.css";
-import formatNumber from "utils/formatNumber";
 
 const SRT_BASE_URL = "https://jkt48.gemes.in/replay/data/srt/";
 
@@ -126,10 +125,26 @@ const ReplayChat = ({ srtFile, currentTime, isPlaying, isTheaterMode }) => {
 
   // Get visible messages based on current video time
   const visibleMessages = useMemo(() => {
-    let msgs = allMessages.filter((msg) => msg.startTime <= currentTime);
+    const seen = new Set();
+
+    const uniqueMessages = allMessages.filter((msg) => {
+      const key = `${msg.username.toLowerCase()}-${msg.message.toLowerCase()}`;
+
+      if (seen.has(key)) {
+        return false;
+      }
+
+      seen.add(key);
+      return true;
+    });
+
+    let msgs = uniqueMessages.filter(
+      (msg) => msg.startTime <= currentTime
+    );
 
     if (search) {
       const searchLower = search.toLowerCase();
+
       msgs = msgs.filter(
         (msg) =>
           msg.username.toLowerCase().includes(searchLower) ||
@@ -169,28 +184,23 @@ const ReplayChat = ({ srtFile, currentTime, isPlaying, isTheaterMode }) => {
     }
   };
 
-  const totalMessages = allMessages.length;
-
   return (
     <Card className="replay-chat-card">
       {/* Header */}
       <div className="replay-chat-header">
         <div className="replay-chat-header-left">
-          <span className="replay-chat-live-dot" />
-          <span className="replay-chat-title">CHAT REPLAY</span>
+          <IoChatbubbleEllipses size={20} />
+          <span className="replay-chat-title">CHAT LIST</span>
         </div>
-        <span className="replay-chat-count">{formatNumber(totalMessages)} MESSAGES</span>
-      </div>
-
-      {/* Search */}
-      <div className="replay-chat-search-wrapper">
-        <input
-          type="text"
-          className="replay-chat-search"
-          placeholder="Cari username, pesan atau gift.."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="replay-chat-search-wrapper">
+          <input
+            type="text"
+            className="replay-chat-search"
+            placeholder="Cari username atau chat.."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </div>
 
       {/* Messages */}

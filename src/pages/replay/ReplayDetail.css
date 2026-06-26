@@ -12,7 +12,17 @@
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
-  height: 0;
+  height: 670px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #000;
+}
+
+.replay-player-container-showroom {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 100%;
   overflow: hidden;
   border-radius: 12px;
   background-color: #000;
@@ -20,6 +30,17 @@
 
 .replay-player-container iframe,
 .replay-player-container #replay-yt-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 670px;
+  border: none;
+  border-radius: 12px;
+}
+
+.replay-player-container-showroom iframe,
+.replay-player-container-showroom #replay-yt-player-showroom {
   position: absolute;
   top: 0;
   left: 0;
@@ -146,5 +167,47 @@
   .replay-action-btn {
     font-size: 12px;
     padding: 6px 12px;
+  }
+
+  .replay-player-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 410px;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #000;
+  }
+
+  .replay-player-container iframe,
+  .replay-player-container #replay-yt-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 410px;
+    border: none;
+    border-radius: 12px;
+  }
+
+  .replay-player-container-showroom {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #000;
+  }
+
+  .replay-player-container-showroom iframe,
+  .replay-player-container-showroom #replay-yt-player-showroom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
   }
 }
