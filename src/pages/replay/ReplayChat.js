@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FaArrowUp, FaCommentDots, FaGift } from "react-icons/fa";
-import { IoChatbubbleEllipses } from "react-icons/io5";
+import { FaArrowUp, FaCommentDots, FaGift, FaSearch } from "react-icons/fa";
+import { IoChatbubbleEllipses, IoCloseCircle } from "react-icons/io5";
 import { Card } from "reactstrap";
 import "./ReplayChat.css";
+import { isDesktop } from "react-device-detect";
 
 const SRT_BASE_URL = "https://jkt48.gemes.in/replay/data/srt/";
 
@@ -184,6 +185,8 @@ const ReplayChat = ({ srtFile, currentTime, isPlaying, isTheaterMode }) => {
     }
   };
 
+  const [showSearch, setShowSearch] = useState(false);
+
   return (
     <Card className="replay-chat-card">
       {/* Header */}
@@ -192,15 +195,38 @@ const ReplayChat = ({ srtFile, currentTime, isPlaying, isTheaterMode }) => {
           <IoChatbubbleEllipses size={20} />
           <span className="replay-chat-title">CHAT LIST</span>
         </div>
-        <div className="replay-chat-search-wrapper">
-          <input
-            type="text"
-            className="replay-chat-search"
-            placeholder="Cari username atau chat.."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
+        {isDesktop && (
+          <div className="replay-chat-search-wrapper">
+            <input
+              type="text"
+              className="replay-chat-search"
+              placeholder="Cari username atau chat.."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+        )}
+        {showSearch && !isDesktop ? (
+          <div className="replay-chat-search-wrapper">
+            <div className="replay-chat-search-container">
+              <input
+                type="text"
+                className="replay-chat-search"
+                placeholder="Cari username atau chat.."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+
+              <IoCloseCircle
+                onClick={() => setShowSearch(false)}
+                className="search-close"
+              />
+            </div>
+          </div>
+        ) : !isDesktop ? (
+          <FaSearch onClick={() => setShowSearch(!showSearch)} />
+        ) : ""}
+
       </div>
 
       {/* Messages */}

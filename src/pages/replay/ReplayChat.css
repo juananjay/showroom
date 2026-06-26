@@ -54,8 +54,33 @@
 }
 
 /* Search */
+/* Wrapper */
 .replay-chat-search-wrapper {
   border-bottom: 1px solid #2a2f38;
+}
+
+/* Container for input + icon */
+.replay-chat-search-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Input */
+.replay-chat-search {
+  width: 100%;
+  border: 1px solid #2a2f38;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* Close icon inside input */
+.search-close {
+  position: absolute;
+  top: 18px;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .replay-chat-search {
