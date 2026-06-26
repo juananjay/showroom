@@ -17,7 +17,7 @@ import { FaDonate, FaTheaterMasks } from "react-icons/fa";
 import { motion } from "framer-motion";
 import useWindowDimensions from "utils/useWindowDimension";
 import { getSession } from "utils/getSession";
-import { MdSmartDisplay } from "react-icons/md";
+import { MdSmartDisplay, MdPlayCircleFilled } from "react-icons/md";
 
 const Sidebar = () => {
   const user = getSession().user;
@@ -54,6 +54,11 @@ const Sidebar = () => {
       name: "Live Stream",
       icon: <RiBroadcastFill style={iconHome} />,
       link: "/room/officialJKT48/332503"
+    },
+     {
+      name: "Replay",
+      icon: <MdPlayCircleFilled style={iconHome} />,
+      link: "/replay"
     },
     {
       name: "Multi Room",
