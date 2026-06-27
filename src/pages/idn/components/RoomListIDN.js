@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button } from "reactstrap";
+import { Table, Button, Input } from "reactstrap";
 import LiveButton from "elements/Button";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -14,6 +14,11 @@ import { getSession } from "utils/getSession";
 const RoomListIDN = ({ currentRoom }) => {
   const [room, setRoom] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [searchMember, setSearchMember] = useState("");
+
+  const filteredRoom = room?.filter((data) =>
+    data?.user?.name?.toLowerCase().includes(searchMember.toLowerCase())
+  );
 
   const handleRefresh = () => {
     setRefresh(true);
@@ -45,7 +50,7 @@ const RoomListIDN = ({ currentRoom }) => {
       <Table dark>
         <thead className="room-list">
           <tr>
-            <th colSpan={2}>Room Live IDN</th>
+            <th colSpan={2}>Room List</th>
             <th onClick={handleRefresh}>
               <IoReload
                 size={20}
@@ -53,8 +58,23 @@ const RoomListIDN = ({ currentRoom }) => {
               />
             </th>
           </tr>
+          <tr>
+            <th colSpan={3} style={{ padding: "8px" }}>
+              <Input
+                type="text"
+                placeholder="Search member..."
+                value={searchMember}
+                onChange={(e) => setSearchMember(e.target.value)}
+                style={{
+                  backgroundColor: "#2D3748",
+                  border: "1px solid #4A5568",
+                  color: "#fff",
+                }}
+              />
+            </th>
+          </tr>
         </thead>
-        {room?.map((data, idx) => (
+        {filteredRoom?.map((data, idx) => (
           <tbody key={idx}>
             <tr>
               <td>

@@ -7,7 +7,8 @@ import {
   TabPane,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  Input
 } from "reactstrap";
 import { ROOM_LIVES_IDN } from "utils/api/api";
 import axios from "axios";
@@ -71,65 +72,85 @@ const RoomMulti = ({
     layout === "fourRoom" && setActiveTab("roomFour");
   }, [layout]);
 
-  const RoomList = ({ setRoom, number, currentRoom }) => (
-    <div className="scroll-room rounded">
-      <Table dark>
-        {roomList?.length === 0 && (
-          <tbody>
-            <tr className="text-center">
-              <td colSpan={3}>
-                <p className="mt-2">Tidak ada member yang Live IDN</p>
-              </td>
-            </tr>
-          </tbody>
-        )}
-        {roomList?.map((data, idx) => (
-          <tbody key={idx}>
-            <tr>
-              <td>
-                <img
-                  src={data.user.avatar}
-                  style={{ borderRadius: "10px" }}
-                  alt={data.name}
-                  width="80"
-                />
-              </td>
-              <td className="d-flex flex-column align-items-center">
-                <span className="mt-4">
-                  {data?.user?.name.replace("JKT48", "")}
-                </span>
-              </td>
-              <td>
-                <div className="mt-4">
-                  <Button
-                    onClick={() => changeRoom(setRoom, data, number)}
-                    style={{
-                      backgroundColor:
-                        currentRoom === data.user.username
-                          ? "#24A2B7"
-                          : "#4A5568",
-                      border: "none",
-                      width: "50px",
-                      height: "30px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center"
-                    }}
-                  >
-                    {currentRoom === data.user.username ? (
-                      <FaUserCheck size={18} />
-                    ) : (
-                      <RiLiveFill />
-                    )}
-                  </Button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        ))}
-      </Table>
-    </div>
-  );
+  const RoomList = ({ setRoom, number, currentRoom }) => {
+    const [searchMember, setSearchMember] = useState("");
+
+    const filteredRoomList = roomList?.filter((data) =>
+      data?.user?.name?.toLowerCase().includes(searchMember.toLowerCase())
+    );
+
+    return (
+      <div className="scroll-room rounded">
+        <Input
+          type="text"
+          placeholder="Search member..."
+          value={searchMember}
+          onChange={(e) => setSearchMember(e.target.value)}
+          className="mb-2 mt-2"
+          style={{
+            backgroundColor: "#2D3748",
+            border: "1px solid #4A5568",
+            color: "#fff",
+          }}
+        />
+        <Table dark>
+          {filteredRoomList?.length === 0 && (
+            <tbody>
+              <tr className="text-center">
+                <td colSpan={3}>
+                  <p className="mt-2">Tidak ada member yang Live IDN</p>
+                </td>
+              </tr>
+            </tbody>
+          )}
+          {filteredRoomList?.map((data, idx) => (
+            <tbody key={idx}>
+              <tr>
+                <td>
+                  <img
+                    src={data.user.avatar}
+                    style={{ borderRadius: "10px" }}
+                    alt={data.name}
+                    width="80"
+                  />
+                </td>
+                <td className="d-flex flex-column align-items-center">
+                  <span className="mt-4">
+                    {data?.user?.name.replace("JKT48", "")}
+                  </span>
+                </td>
+                <td>
+                  <div className="mt-4">
+                    <Button
+                      onClick={() => changeRoom(setRoom, data, number)}
+                      style={{
+                        backgroundColor:
+                          currentRoom === data.user.username
+                            ? "#24A2B7"
+                            : "#4A5568",
+                        border: "none",
+                        width: "50px",
+                        height: "30px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
+                      }}
+                    >
+                      {currentRoom === data.user.username ? (
+                        <FaUserCheck size={18} />
+                      ) : (
+                        <RiLiveFill />
+                      )}
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          ))}
+        </Table>
+      </div>
+    );
+  };
 
   const buttonActive = (isActive) => {
     return isActive === activeTab ? "active-nav-idn mr-1" : "inactive-nav mr-1";
