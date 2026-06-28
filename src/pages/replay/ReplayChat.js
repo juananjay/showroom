@@ -153,7 +153,7 @@ const ReplayChat = ({ srtFile, currentTime, isPlaying, isTheaterMode }) => {
       );
     }
 
-    return msgs.reverse();
+    return msgs?.filter((item) => !item?.message?.includes("[LETTER]")).reverse();
   }, [allMessages, currentTime, search]);
 
   // Auto-scroll to top when new messages appear
