@@ -10,8 +10,8 @@ import Pagination from "parts/Pagination";
 import debounce from "lodash.debounce";
 import "./ReplayList.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { REPLAY_API_URL } from "utils/api/api";
 
-const REPLAY_API_URL = "https://jkt48.gemes.in/replay/data/videos.json";
 
 const ReplayList = (props) => {
   const [videos, setVideos] = useState([]);

@@ -169,6 +169,7 @@ const CHAT_ID = (username, slug) => {
 };
 
 const SHOWROOM_COMPETITION = `${API}/rooms/competition`;
+const REPLAY_API_URL = "https://jkt48.gemes.in/replay/data/videos.json";
 
 export {
   API,
@@ -234,5 +235,6 @@ export {
   LEADERBOARD_IDN,
   MOST_WATCH_IDN,
   CHAT_ID,
-  SHOWROOM_COMPETITION
+  SHOWROOM_COMPETITION,
+  REPLAY_API_URL
 };

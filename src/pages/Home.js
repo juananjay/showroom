@@ -12,9 +12,9 @@ import {
   RoomList,
   RoomLive,
   SearchAndFilter,
-  TopCompetition,
 } from "parts";
 import RecentLive from "parts/RecentLive";
+import ReplayLive from "parts/ReplayLive";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRoomListRegular,
@@ -93,8 +93,8 @@ function Home(props) {
             <>
               <RoomLive isOnLive={isLive} search={search} theme={props.theme} />
               <IDNLiveList />
-              <TopCompetition />
               <RecentLive isSearch={search} />
+              <ReplayLive isSearch={search} />
               <Schedule isShowing={true} isSearch={search} isHome />
               {filtered.length > 0 && (
                 <div>
